@@ -1,0 +1,11 @@
+<table class="table table-striped">
+    <thead>
+        <th>Customer Name</th>
+        <th>Customer Company</th>
+    </thead>
+    <tr *ngFor="let customer of customers">
+        <td>{{customer.firstName}} {{customer.lastName}}</td>
+        <td>{{customer.companyName}}</td>
+    </tr>
+    </table>
+    
