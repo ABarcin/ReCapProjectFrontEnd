@@ -1,0 +1,62 @@
+<div class="row" style="padding-bottom: 50px;">
+  <table class="table table-striped" style="text-align: center;vertical-align: middle;">
+    <thead>
+      <th>Car Name</th>
+      <th>Brand Name</th>
+      <th>Color Name</th>
+      <th>Daily Price</th>
+      <th>Model Year</th>
+      <th>Description</th>
+      <th>Rent Car</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of carDetail">
+        <td>{{ car.carName }}</td>
+        <td>{{ car.brandName }}</td>
+        <td>{{ car.colorName }}</td>
+        <td>{{ car.dailyPrice }}</td>
+        <td>{{ car.modelYear }}</td>
+        <td>{{ car.description }}</td>
+        <td><button class="btn btn-success"> Rent Car</button></td>
+      </tr>
+    </tbody>
+    
+  </table>
+    <div class="col">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            *ngFor="let carImage of carImages"
+            [class]="getCurrentSliderImageClass(carImage)"
+          >
+            <img
+              src="{{ imageBaseUrl + carImage.imagePath }}"
+              class="d-block w-100"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>

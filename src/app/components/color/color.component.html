@@ -1,8 +1,16 @@
-<table class="table">
-    <thead>
-        <th>Color Name</th>
-    </thead>
-    <tr *ngFor="let color of colors">
-        <td>{{color.colorName}}</td>
-    </tr>
-    </table>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Colors
+    </a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <li [class]="getAllColorClass()" routerLink="/cars">Tüm Arabalar</li>
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/cars/color/{{ color.colorId }}"
+    [class]="getCurrentColorClass(color)"
+    *ngFor="let color of colors"
+  >
+    {{ color.colorName }}
+  </li>
+</ul>
+</li>

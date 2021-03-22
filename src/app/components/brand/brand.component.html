@@ -1,8 +1,16 @@
-<table class="table">
-<thead>
-    <th>Brand Name</th>
-</thead>
-<tr *ngFor="let brand of brands">
-    <td>{{brand.brandName}}</td>
-</tr>
-</table>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Brands
+  </a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Arabalar</li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{ brand.brandId }}"
+    [class]="getCurrentBrandClass(brand)"
+    *ngFor="let brand of brands"
+  >
+    {{ brand.brandName }}
+  </li>
+</ul>
+</li>
