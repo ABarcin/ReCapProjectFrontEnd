@@ -10,6 +10,7 @@ import { ListResponseModel } from '../models/listResponseModel';
 export class CarService {
   
   constructor(private httpClient:HttpClient) { }
+  filterText="";
   apiUrl="https://localhost:44373/api/";
   getCars(): Observable<ListResponseModel<Car>> {
     let newPath=this.apiUrl+"cars/getallcarsdetail";
@@ -26,5 +27,11 @@ export class CarService {
   getCarById(carId: number):Observable<ListResponseModel<Car>>{
     let newPath=this.apiUrl+"cars/getcarsdetailbycarid?carId="+carId
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  setCarFilter(filterText:string){
+    this.filterText=filterText;
+  }
+  getCarFilter(){
+    return this.filterText;
   }
 }

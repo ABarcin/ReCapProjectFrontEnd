@@ -1,69 +1,110 @@
-
-    <div class="row" style="padding-bottom: 50px;">
-        <div class="col-lg-12">
-            <div
-              id="carouselExampleControls"
-              class="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <div
-                  *ngFor="let carImage of carImages"
-                  [class]="getCurrentSliderImageClass(carImage)"
-                >
-                  <img
-                    src="{{ imageBaseUrl + carImage.imagePath }}"
-                    class="d-block w-100"
-                    style="height: 500px;"
-                  />
-                </div>
-              </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-    </div>
-    <div class="row" >
-      <div class="col">
-        <table class="table table-striped" style="text-align: center;vertical-align: middle;">
-          <thead>
-              <th>Car Name</th>
-              <th>Brand Name</th>
-              <th>Color Name</th>
-              <th>Daily Price</th>
-              <th>Model Year</th>
-              <th>Description</th>
-              <th>Rent Car</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let car of cars">
-              <td routerLink="/cars/car/{{car.carId}}">{{car.carName}}</td>
-              <td>{{car.brandName}}</td>
-              <td>{{car.colorName}}</td>
-              <td>{{car.dailyPrice}}</td>
-              <td>{{car.modelYear}}</td>
-              <td>{{car.description}}</td>
-              <td><button class="btn btn-success">Rent Car</button></td>
-          </tr>
-          </tbody>
-         
-          </table>
+<div class="row" style="padding-bottom: 50px">
+  <div class="col-lg-12">
+    <div
+      id="carouselExampleControls"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div
+          *ngFor="let carImage of carImages"
+          [class]="getCurrentSliderImageClass(carImage)"
+        >
+          <img
+            src="{{ imageBaseUrl + carImage.imagePath }}"
+            class="d-block w-100"
+            style="height: 500px"
+          />
+        </div>
       </div>
-        
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControls"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+  </div>
+</div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Search Car</label>
+  <input
+    type="text"[(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="enter text for search car"
+  />
+</div>
+<div class="row" style="text-align: center;">
+  <div class="col-md-6">
+    <form [formGroup]="brandForm" (ngSubmit)="getBrandSubmit()">
+      <p>
+       
+        <select formControlName="brand">
+          <option [ngValue]="null" disabled>Select Brand</option>
+          <option *ngFor="let brand of brands" [ngValue]="brand.brandId">{{brand.brandName}}</option>
+        </select>
+       
+        <button type="getBrandSubmit">Filter Brand</button>
+      </p>
+       
+      </form>
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <form [formGroup]="colorForm" (ngSubmit)="getColorSubmit()">
+      <p>
+       
+        <select formControlName="color">
+          <option [ngValue]="null" disabled>Select Color</option>
+          <option *ngFor="let color of colors" [ngValue]="color.colorId">{{color.colorName}}</option>
+        </select>
+       
+        <button type="getColorSubmit">Filter Color</button>
+      </p>
+       
+      </form>
+  </div>
+</div>
+
+  
+<div class="row">
+  <div class="col">
+    <table
+      class="table table-striped"
+      style="text-align: center; vertical-align: middle"
+    >
+      <thead>
+        <th>Car Name</th>
+        <th>Brand Name</th>
+        <th>Color Name</th>
+        <th>Daily Price</th>
+        <th>Model Year</th>
+        <th>Description</th>
+        <th>Rent Car</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars | filterPipe: filterText">
+          <td routerLink="/cars/car/{{ car.carId }}">{{ car.carName }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.dailyPrice }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.description }}</td>
+          <td><button class="btn btn-success">Rent Car</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
