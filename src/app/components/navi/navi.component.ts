@@ -9,17 +9,11 @@ import { CarComponent } from '../car/car.component';
   styleUrls: ['./navi.component.css']
 })
 export class NaviComponent implements OnInit {
-  filterText = '';
   userName="";
   password="";
   constructor(private carService:CarService,private router:Router) { }
 
   ngOnInit(): void {
   }
-  getFilterCars(filterText:string){
-    this.filterText=filterText;
-    this.carService.setCarFilter(this.filterText);
-    
-    
-  }
+  
 }

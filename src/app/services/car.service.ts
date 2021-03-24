@@ -28,10 +28,4 @@ export class CarService {
     let newPath=this.apiUrl+"cars/getcarsdetailbycarid?carId="+carId
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
-  setCarFilter(filterText:string){
-    this.filterText=filterText;
-  }
-  getCarFilter(){
-    return this.filterText;
-  }
 }

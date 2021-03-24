@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
@@ -32,7 +33,8 @@ export class CarComponent implements OnInit {
     private carImageService: CarImageService,
     private formBuilder:FormBuilder,
     private brandService:BrandService,
-    private colorService:ColorService
+    private colorService:ColorService,
+    private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +81,7 @@ export class CarComponent implements OnInit {
     this.carService.getCarsByBrand(brandId).subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
+      this.toastrService.success("Filtre Uygulandı",this.cars[0].carName)
     });
   }
   getCarsByColor(colorId: number) {
@@ -117,12 +120,23 @@ export class CarComponent implements OnInit {
   this.carService.getCarsByBrand(this.brandForm.get('brand').value).subscribe((response) => {
     this.cars = response.data;
     this.dataLoaded = true;
+    if(this.cars.length>0)
+    this.toastrService.success("Filtered By Brand",this.cars[0].brandName)
+    else{
+      this.toastrService.error("No Vehicle Matching The Filter Found")
+    }
+    
   });
 }
 getColorSubmit() {
   this.carService.getCarsByColor(this.colorForm.get('color').value).subscribe((response) => {
     this.cars = response.data;
     this.dataLoaded = true;
+    if(this.cars.length>0)
+    this.toastrService.success("Filtered By Color",this.cars[0].colorName)
+    else{
+      this.toastrService.error("No Vehicle Matching The Filter Found")
+    }
   });
 }
 }

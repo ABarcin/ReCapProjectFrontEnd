@@ -18,6 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
+import { CalculateTotalPricePipe } from './pipes/calculate-total-price.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     CarDetailComponent,
     FooterComponent,
     FilterPipePipe,
+    CalculateTotalPricePipe,
   ],
   imports: [
     BrowserModule,

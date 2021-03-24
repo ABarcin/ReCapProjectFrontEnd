@@ -17,7 +17,7 @@
         <td>{{ car.dailyPrice }}</td>
         <td>{{ car.modelYear }}</td>
         <td>{{ car.description }}</td>
-        <td><button class="btn btn-success"> Rent Car</button></td>
+        <td><button routerLink="/cars/rental/{{car.carId}}"class="btn btn-success">Rent Car</button></td>
       </tr>
     </tbody>
     
