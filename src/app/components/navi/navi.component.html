@@ -22,19 +22,37 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input type="text"[(ngModel)]="userName"
-        [ngModelOptions]="{standalone:true}"
-        class="form-control"
-        id="userName"
-        placeholder="UserName">
-        <input type="text"[(ngModel)]="password"
-        [ngModelOptions]="{standalone:true}"
-        class="form-control"
-        id="password"
-        placeholder="PassWord">
-        <button class="btn btn-outline-success"  type="submit">Login</button>
+      <form class="d-flex" [formGroup]="loginForm" *ngIf="showForm">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+        <button class="btn btn-outline-success"  (click)="login()" routerLink="cars">Login</button>
+        <button class="btn btn-outline-success" routerLink="register"  type="submit">Register</button>
       </form>
+      <div class="btn-group" *ngIf="userName">
+        <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+         Welcome {{userName}}
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" >{{user.firstName}}</a></li>
+          <li><a class="dropdown-item" >{{user.lastName}}</a></li>
+          <li><a class="dropdown-item" >{{user.email}}</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" routerLink="/user/update">Edit</a></li>
+          <li><a class="dropdown-item" (click)="logout()">Exit</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

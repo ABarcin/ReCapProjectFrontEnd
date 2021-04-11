@@ -3,14 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
+import { RentalAddModel } from '../models/rentalAddModel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RentalService {
-  apiUrl = 'https://localhost:44373/api/rentals/getrentaldetails';
+  apiUrl = 'https://localhost:44373/api/';
   constructor(private httpClient: HttpClient) {}
   getRentals(): Observable<ListResponseModel<Rental>> {
-    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<Rental>>(this.apiUrl+"rentals/getrentaldetails");
+  }
+  add(rentalCar:RentalAddModel):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"rentals/add",rentalCar)
   }
 }

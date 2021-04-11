@@ -19,6 +19,7 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class CarComponent implements OnInit {
   brandForm:FormGroup;
+  
   colorForm:FormGroup;
   cars: Car[] = [];
   brands:Brand[]=[];

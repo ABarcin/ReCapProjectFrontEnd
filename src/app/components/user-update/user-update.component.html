@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Update User</h5></div>
+        <div class="card-body">
+          <form [formGroup]="userUpdateForm" *ngIf="user">
+            <div class="mb-3">
+              <label for="firstName">User Name</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  class="form-control"
+                  placeholder={{user.firstName}}
+                />
+              </div>
+              <label for="lastName">Last Name</label>
+              <div class="form-group">
+                <input
+                  type="string"
+                  id="lastName"
+                  formControlName="lastName"
+                  class="form-control"
+                  placeholder={{user.lastName}}
+                />
+              </div>
+              <label for="email">Email</label>
+              <div class="form-group">
+                <input
+                  type="string"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder={{user.email}}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-fill btn-primary" (click)="update()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
