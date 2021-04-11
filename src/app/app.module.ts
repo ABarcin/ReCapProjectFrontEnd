@@ -19,6 +19,12 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
 import { CalculateTotalPricePipe } from './pipes/calculate-total-price.pipe';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,12 @@ import { CalculateTotalPricePipe } from './pipes/calculate-total-price.pipe';
     FooterComponent,
     FilterPipePipe,
     CalculateTotalPricePipe,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    ColorAddComponent,
+    ColorUpdateComponent,
+    CarAddComponent,
+    CarUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
     Brands
   </a>
 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-  <li [class]="getAllBrandClass()" routerLink="/cars">Tüm Arabalar</li>
+  <li [class]="getAllBrandClass()" routerLink="/cars">All Brands</li>
   <li
     (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{ brand.brandId }}"
