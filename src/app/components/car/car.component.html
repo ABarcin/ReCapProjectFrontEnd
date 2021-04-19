@@ -39,7 +39,7 @@
   </div>
 </div>
 <div class="mb-3">
-  <label for="filterText" class="form-label">Search Car</label>
+  <h6 for="filterText" class="form-label">Search Car</h6>
   <input
     type="text"[(ngModel)]="filterText"
     class="form-control"
@@ -80,31 +80,20 @@
 
   
 <div class="row">
-  <div class="col">
-    <table
-      class="table table-striped"
-      style="text-align: center; vertical-align: middle"
-    >
-      <thead>
-        <th>Car Name</th>
-        <th>Brand Name</th>
-        <th>Color Name</th>
-        <th>Daily Price</th>
-        <th>Model Year</th>
-        <th>Description</th>
-        <th>Rent Car</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let car of cars | filterPipe: filterText">
-          <td routerLink="/cars/car/{{ car.carId }}">{{ car.carName }}</td>
-          <td>{{ car.brandName }}</td>
-          <td>{{ car.colorName }}</td>
-          <td>{{ car.dailyPrice }}</td>
-          <td>{{ car.modelYear }}</td>
-          <td>{{ car.description  }}</td>
-          <td><button routerLink="/cars/rental/{{car.carId}}"class="btn btn-success">Rent Car</button></td>
-        </tr>
-      </tbody>
-    </table>
+ 
+</div>
+<div class="row">
+<div class="col-md-6 col-lg-3 " *ngFor="let car of cars | filterPipe: filterText">
+  <div class="w3-card">
+    <h4 align="left">{{ car.brandName }}</h4>
+    <img class="img-fluid" src="{{ imageBaseUrl + car.imagePath }}" style="height: 200px; width: 480px;" alt="">
+    <h4 align="center" routerLink="/cars/car/{{ car.carId }}">{{ car.carName }}</h4>
+    <p align="center">{{ car.description }}</p>
+    <p align="center">{{ car.modelYear }}</p>
+    <p align="center">{{ car.colorName }}</p>
+    <h5 align="center">{{ car.dailyPrice |  currency }} Per Day</h5>
+    <p align="center"><button routerLink="/cars/rental/{{car.carId}}"class="btn btn-success">Rent Car</button></p>
   </div>
 </div>
+</div>
+<br>
