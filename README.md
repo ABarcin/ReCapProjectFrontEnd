@@ -1,6 +1,6 @@
 # ReCapProjectFrontend With Angular
 Bu repo ReCapProject Backend kısmının frontend'i için tasarlanmıştır. Bu reponun oluşturulması hem kendimi geliştirmek hemde bu yolda gitmek isteyen arkadaşların görmesi ve en azından bir fikir vermesi için oluşturulmuştur.
-![Frontend Görünümü](https://media.giphy.com/media/9PYWngCla9aSpHwt5O/giphy.gif)
+![Frontend Görünümü](https://media.giphy.com/media/9FuKvk3wL8n9QMz1Da/giphy.gif)
 ## Getting Started
 Angular kullanmak isteyenere fikir vermek ve kendimi bu yolda geliştirmek için oluşturmuş olduğum bu projede. Engin hocamızın direktifleri ile yapılanörnek bir projedir. Daha detaylı bilgi için aşağıda paylaşacağım iletişim bilgilerinden bana ulaşabilirsiniz
 ### Prerequisites
